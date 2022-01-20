@@ -24,7 +24,6 @@ namespace WzComparerR2.Comparer
         public bool OutputRemovedImg { get; set; }
         public bool EnableDarkMode { get; set; }
 
-
         public string StateInfo
         {
             get { return stateInfo; }

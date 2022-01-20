@@ -266,6 +266,11 @@ namespace WzComparerR2
             {
                 MessageBoxEx.Show("Patch Aborted.", "Patcher");
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                // File IO permission error
+                MessageBoxEx.Show(this, ex.ToString(), "Patcher");
+            }
             catch (Exception ex)
             {
                 AppendStateText(ex.ToString());
