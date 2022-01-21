@@ -567,13 +567,6 @@ namespace WzComparerR2.CharaSimControl
                 }
             }
 
-            if (hasTuc && Gear.PlatinumHammer > -1)
-            {
-                g.DrawString("白金锤强化次数：" + Gear.PlatinumHammer, GearGraphics.ItemDetailFont, Brushes.White, 11, picH);
-                picH += 16;
-                hasPart2 = true;
-            }
-
             picH += 5;
 
             //绘制浮动属性
