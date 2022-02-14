@@ -1,8 +1,6 @@
 ﻿# WzComparerR2
 -Translated for English use by PirateIzzy (work in progress)
 
-- NOTE: As of November 21, 2020, you will need to re-clone this repository if you cloned it before.
-
 # Modules
 - **WzComparerR2** 
 - **WzComparerR2.Common** 
@@ -14,7 +12,7 @@
 - **WzComparerR2.Avatar**
 
 # Prerequisite
-- **2.x**: Win7sp1+/.net4.5.2+/dx11.0
+- **2.x**: Win7sp1+/.net4.6.2+/dx11.0
 - **1.x**: WinXp+/.net2.0+/dx9.0
 
 # Installation
