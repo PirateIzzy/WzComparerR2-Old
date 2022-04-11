@@ -189,6 +189,7 @@ namespace WzComparerR2
             Wz_Structure.DefaultEncoding = enc;
             Wz_Structure.DefaultAutoDetectExtFiles = config.AutoDetectExtFiles;
             Wz_Structure.DefaultImgCheckDisabled = config.ImgCheckDisabled;
+            Wz_Structure.DefaultWzVersionVerifyMode = config.WzVersionVerifyMode;
         }
 
         void CharaSimLoader_WzFileFinding(object sender, FindWzEventArgs e)
@@ -1343,7 +1344,7 @@ namespace WzComparerR2
             {
                 foreach (Wz_Node child in parent.Nodes)
                 {
-                    if (child.Value != null) //只过滤文件夹 未来有需求再改
+                    if (child.Nodes.Count == 0) //只过滤文件夹 未来有需求再改
                     {
                         continue;
                     }
