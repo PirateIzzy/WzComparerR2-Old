@@ -91,7 +91,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(99, 16);
             this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "BackGroundColor";
+            this.labelX1.Text = "BackgroundColor";
             // 
             // checkBoxX1
             // 
@@ -216,7 +216,7 @@
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(68, 16);
             this.labelX4.TabIndex = 0;
-            this.labelX4.Text = "BackGround";
+            this.labelX4.Text = "Background";
             // 
             // rdoMosaic
             // 
@@ -230,7 +230,7 @@
             this.rdoMosaic.Name = "rdoMosaic";
             this.rdoMosaic.Size = new System.Drawing.Size(64, 16);
             this.rdoMosaic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.superTooltip1.SetSuperTooltip(this.rdoMosaic, new DevComponents.DotNetBar.SuperTooltipInfo("", "", "使用马赛克晶格作为背景生成Gif动画", null, null, DevComponents.DotNetBar.eTooltipColor.System));
+            this.superTooltip1.SetSuperTooltip(this.rdoMosaic, new DevComponents.DotNetBar.SuperTooltipInfo("", "", "Generate animated Gifs with transparent or solid backgrounds", null, null, DevComponents.DotNetBar.eTooltipColor.System));
             this.rdoMosaic.TabIndex = 3;
             this.rdoMosaic.Text = "Mosaic";
             this.rdoMosaic.CheckedChanged += new System.EventHandler(this.rdoMosaic_CheckedChanged);
@@ -513,7 +513,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmGifSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Gif输出设置";
+            this.Text = "GIF Output Settings";
             this.panelExMosaic.ResumeLayout(false);
             this.panelExMosaic.PerformLayout();
             this.panelExColor.ResumeLayout(false);

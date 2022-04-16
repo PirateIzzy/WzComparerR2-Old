@@ -164,7 +164,7 @@
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(142, 30);
             this.labelX3.TabIndex = 6;
-            this.labelX3.Text = "Focus On The Tooltip Window.<br/>\r\nUse the <b>- + [ ]</b> keys to adjust the level.";
+            this.labelX3.Text = "Focus On The Tooltip Window.<br/>\r\nUse the <b>- + [ ]</b> keys to increment the level.";
             // 
             // comboBoxEx2
             // 
@@ -180,7 +180,7 @@
             this.comboItem8,
             this.comboItem9,
             this.comboItem10});
-            this.comboBoxEx2.Location = new System.Drawing.Point(94, 153);
+            this.comboBoxEx2.Location = new System.Drawing.Point(110, 153);
             this.comboBoxEx2.Name = "comboBoxEx2";
             this.comboBoxEx2.Size = new System.Drawing.Size(90, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -222,7 +222,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(81, 18);
             this.labelX2.TabIndex = 4;
-            this.labelX2.Text = "Lv. Adjustment Interval";
+            this.labelX2.Text = "Level Increment";
             // 
             // labelX1
             // 
@@ -236,7 +236,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(81, 18);
             this.labelX1.TabIndex = 3;
-            this.labelX1.Text = "Default Skill Lv.";
+            this.labelX1.Text = "Default Skill Level";
             // 
             // comboBoxEx1
             // 
@@ -250,7 +250,7 @@
             this.comboItem2,
             this.comboItem3,
             this.comboItem4});
-            this.comboBoxEx1.Location = new System.Drawing.Point(94, 128);
+            this.comboBoxEx1.Location = new System.Drawing.Point(110, 128);
             this.comboBoxEx1.Name = "comboBoxEx1";
             this.comboBoxEx1.Size = new System.Drawing.Size(90, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -258,19 +258,19 @@
             // 
             // comboItem1
             // 
-            this.comboItem1.Text = "Lv.0";
+            this.comboItem1.Text = "Lv. 0";
             // 
             // comboItem2
             // 
-            this.comboItem2.Text = "Lv.1";
+            this.comboItem2.Text = "Lv. 1";
             // 
             // comboItem3
             // 
-            this.comboItem3.Text = "Lv.Max";
+            this.comboItem3.Text = "Lv. Max";
             // 
             // comboItem4
             // 
-            this.comboItem4.Text = "Lv.Max+2";
+            this.comboItem4.Text = "Lv. Max+2";
             // 
             // checkBoxX2
             // 
@@ -570,7 +570,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 261);
+            this.ClientSize = new System.Drawing.Size(400, 261);
             this.Controls.Add(this.superTabControl1);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;

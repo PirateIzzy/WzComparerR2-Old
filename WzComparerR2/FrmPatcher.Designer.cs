@@ -876,11 +876,11 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(12, 86);
+            this.labelX3.Location = new System.Drawing.Point(7, 86);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(285, 18);
             this.labelX3.TabIndex = 1;
-            this.labelX3.Text = "这功能太危险了在考虑要不要放出来...还是算了吧";
+            this.labelX3.Text = "Note: This function is not fully implemented.";
             // 
             // superTooltip1
             // 

@@ -31,8 +31,8 @@ namespace WzComparerR2
 
             cmbWzVersionVerifyMode.Items.AddRange(new[]
             {
-                new ComboItem("默认"){ Value = WzLib.WzVersionVerifyMode.Default },
-                new ComboItem("快速"){ Value = WzLib.WzVersionVerifyMode.Fast },
+                new ComboItem("Default"){ Value = WzLib.WzVersionVerifyMode.Default },
+                new ComboItem("Fast"){ Value = WzLib.WzVersionVerifyMode.Fast },
             });
         }
 

@@ -109,7 +109,7 @@
             this.bar2.AutoSyncBarCaption = true;
             this.bar2.CloseSingleTab = true;
             this.bar2.Controls.Add(this.panelDockContainer1);
-            this.bar2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bar2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bar2.GrabHandleStyle = DevComponents.DotNetBar.eGrabHandleStyle.Caption;
             this.bar2.IsMaximized = false;
             this.bar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -122,7 +122,7 @@
             this.bar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar2.TabIndex = 0;
             this.bar2.TabStop = false;
-            this.bar2.Text = "输出";
+            this.bar2.Text = "Output";
             // 
             // panelDockContainer1
             // 
@@ -159,7 +159,7 @@
             // 
             this.dockContainerItem1.Control = this.panelDockContainer1;
             this.dockContainerItem1.Name = "dockContainerItem1";
-            this.dockContainerItem1.Text = "输出";
+            this.dockContainerItem1.Text = "Output";
             // 
             // dockSite9
             // 

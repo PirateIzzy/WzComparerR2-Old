@@ -519,6 +519,8 @@ namespace WzComparerR2.MapRender
                     this.ui.ChatBox.AppendTextHelp(@"/history [maxCount] View map history.");
                     this.ui.ChatBox.AppendTextHelp(@"/multibgmlist View Multi BGM list (maps using BgmMultiTrack only).");
                     this.ui.ChatBox.AppendTextHelp(@"/multibgmset (BGM name) Change current BGM (maps using BgmMultiTrack only).");
+                    this.ui.ChatBox.AppendTextHelp(@"/minimap Set the minimap state.");
+                    this.ui.ChatBox.AppendTextHelp(@"/scene Set the map scene display state.");
                     break;
 
                 case "/map":
@@ -628,6 +630,94 @@ namespace WzComparerR2.MapRender
                     {
                         this.ui.ChatBox.AppendTextHelp($"Please enter the correct BGM name.");
                     }
+                    break;
+
+                case "/minimap":
+                    var canvasList = this.mapData?.MiniMap?.ExtraCanvas;
+                    switch (arguments.ElementAtOrDefault(1))
+                    {
+                        case "list":
+                            this.ui.ChatBox.AppendTextHelp($"minimap: {string.Join(", ", canvasList?.Keys)}");
+                            break;
+
+                        case "set":
+                            string canvasName = arguments.ElementAtOrDefault(2);
+                            Texture2D canvas = null;
+                            if (canvasList?.TryGetValue(canvasName, out canvas) ?? false)
+                            {
+                                this.ui.Minimap.MinimapCanvas = engine.Renderer.CreateTexture(canvas);
+                                this.ui.ChatBox.AppendTextHelp($"Set up a minimap: {canvasName}");
+                            }
+                            else
+                            {
+                                this.ui.ChatBox.AppendTextSystem($"Unable to find minimap: {canvasName}");
+                            }
+                            break;
+
+                        default:
+                            this.ui.ChatBox.AppendTextHelp(@"/minimap list Show all minimap names");
+                            this.ui.ChatBox.AppendTextHelp(@"/minimap set (canvasName) Set up a minimap");
+                            break;
+                    }
+                    break;
+
+                case "/scene":
+                    switch (arguments.ElementAtOrDefault(1))
+                    {
+                        case "tag":
+                            switch (arguments.ElementAtOrDefault(2))
+                            {
+                                case "list":
+                                    var tags = GetSceneContainers(this.mapData?.Scene)
+                                        .SelectMany(container => container.Slots)
+                                        .Select(sceneItem => sceneItem.Tag)
+                                        .Where(tag => !string.IsNullOrEmpty(tag))
+                                        .Distinct()
+                                        .OrderBy(tag => tag)
+                                        .ToList();
+                                    this.ui.ChatBox.AppendTextHelp($"tags: {string.Join(", ",tags)}");
+                                    break;
+                                case "show":
+                                    string tagName = arguments.ElementAtOrDefault(3);
+                                    if (!string.IsNullOrEmpty(tagName))
+                                    {
+                                        this.patchVisibility.SetTagVisible(tagName, true);
+                                        this.ui.ChatBox.AppendTextHelp($"Show Tag: {tagName}");
+                                    }
+                                    else
+                                    {
+                                        this.ui.ChatBox.AppendTextSystem("No tagName entered.");
+                                    }
+                                    break;
+                                case "hide":
+                                    tagName = arguments.ElementAtOrDefault(3);
+                                    this.patchVisibility.SetTagVisible(tagName, false);
+                                    if (!string.IsNullOrEmpty(tagName))
+                                    {
+                                        this.patchVisibility.SetTagVisible(tagName, false);
+                                        this.ui.ChatBox.AppendTextHelp($"Hide Tag: {tagName}");
+                                    }
+                                    else
+                                    {
+                                        this.ui.ChatBox.AppendTextSystem("No tagName entered.");
+                                    }
+                                    break;
+                                case "reset":
+                                    this.patchVisibility.ResetTagVisible();
+                                    break;
+                                default:
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag list List the tags of all objects in the scene.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag show (tagName) Shows the object with tagName.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag hide (tagName) Hides the object with tagName.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag reset Reset all objects to display state.");
+                                    break;
+                            }
+                            break;
+
+                        default:
+                            this.ui.ChatBox.AppendTextHelp(@"/scene tag Set the display state of the tag.");
+                            break;
+            }
                     break;
 
                 default:

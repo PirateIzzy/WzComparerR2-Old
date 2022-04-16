@@ -166,7 +166,7 @@
             this.cmbWzEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWzEncoding.FormattingEnabled = true;
             this.cmbWzEncoding.ItemHeight = 15;
-            this.cmbWzEncoding.Location = new System.Drawing.Point(86, 59);
+            this.cmbWzEncoding.Location = new System.Drawing.Point(130, 59);
             this.cmbWzEncoding.Name = "cmbWzEncoding";
             this.cmbWzEncoding.Size = new System.Drawing.Size(121, 21);
             this.cmbWzEncoding.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -245,7 +245,7 @@
             this.cmbWzVersionVerifyMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWzVersionVerifyMode.FormattingEnabled = true;
             this.cmbWzVersionVerifyMode.ItemHeight = 15;
-            this.cmbWzVersionVerifyMode.Location = new System.Drawing.Point(86, 132);
+            this.cmbWzVersionVerifyMode.Location = new System.Drawing.Point(130, 132);
             this.cmbWzVersionVerifyMode.Name = "cmbWzVersionVerifyMode";
             this.cmbWzVersionVerifyMode.Size = new System.Drawing.Size(121, 21);
             this.cmbWzVersionVerifyMode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -263,13 +263,13 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(68, 18);
             this.labelX2.TabIndex = 7;
-            this.labelX2.Text = "wz版本验证";
+            this.labelX2.Text = "WZ version verification";
             // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 201);
+            this.ClientSize = new System.Drawing.Size(400, 201);
             this.Controls.Add(this.superTabControl1);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
