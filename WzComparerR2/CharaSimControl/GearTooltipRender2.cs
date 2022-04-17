@@ -532,7 +532,6 @@ namespace WzComparerR2.CharaSimControl
             }
             */
 
-
             if (Gear.type == GearType.shovel || Gear.type == GearType.pickaxe)
             {
                 string skillName = null;
@@ -565,6 +564,12 @@ namespace WzComparerR2.CharaSimControl
                     picH += 15;
                     hasPart2 = true;
                 }
+            }
+
+            if (Gear.GetBooleanValue(GearPropType.noPotential))
+            {
+                TextRenderer.DrawText(g, ItemStringHelper.GetGearPropString(GearPropType.noPotential, value), GearGraphics.EquipDetailFont, new Point(13, picH), Color.White, TextFormatFlags.NoPadding);
+                picH += 15;
             }
 
             picH += 5;
@@ -1079,10 +1084,6 @@ namespace WzComparerR2.CharaSimControl
             if (Gear.Props.TryGetValue(GearPropType.blockGoldHammer, out value) && value != 0)
             {
                 tags.Add(ItemStringHelper.GetGearPropString(GearPropType.blockGoldHammer, value));
-            }
-            if (Gear.Props.TryGetValue(GearPropType.noPotential, out value) && value != 0)
-            {
-                tags.Add(ItemStringHelper.GetGearPropString(GearPropType.noPotential, value));
             }
             if (Gear.Props.TryGetValue(GearPropType.fixedPotential, out value) && value != 0)
             {

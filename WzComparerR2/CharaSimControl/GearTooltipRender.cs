@@ -348,8 +348,7 @@ namespace WzComparerR2.CharaSimControl
                 picHeight += 15;
                 hasPart2 = true;
             }
-               
-            
+
             //分割线2号
             if (hasPart2)
             {
@@ -619,10 +618,6 @@ namespace WzComparerR2.CharaSimControl
                             if (!tags.Contains(tradeBlock))
                                 tags.Add(tradeBlock);
                         }
-                    }
-                    if (gear.Props.TryGetValue(GearPropType.noPotential, out value) && value != 0)
-                    {
-                        tags.Add(ItemStringHelper.GetGearPropString(GearPropType.noPotential, value));
                     }
                     if (gear.Props.TryGetValue(GearPropType.fixedPotential, out value) && value != 0)
                     {

@@ -306,6 +306,7 @@ namespace WzComparerR2.MapRender
                 };
 
                 EmptyKeys.UserInterface.Input.KeyEventHandler keyEv;
+                var keyApplied = new Dictionary<KeyCode, bool>();
 
                 keyEv = (o, e) =>
                 {
@@ -330,15 +331,31 @@ namespace WzComparerR2.MapRender
                         case KeyCode.RightControl:
                             boostMoveFlag |= 0x02;
                             break;
+
+                        default:
+                            return;
                     }
+                    keyApplied[e.Key] = true;
+                    e.Handled = true;
                 };
-                this.ui.KeyDown += keyEv;
-                this.attachedEvent.Add(EventDisposable(keyEv, _ev => this.ui.KeyDown -= _ev));
+                this.ui.PreviewKeyDown += keyEv;
+                this.attachedEvent.Add(EventDisposable(keyEv, _ev => this.ui.PreviewKeyDown -= _ev));
 
                 keyEv = (o, e) =>
                 {
                     switch (e.Key)
                     {
+                        case KeyCode.Up:
+                        case KeyCode.Down:
+                        case KeyCode.Left:
+                        case KeyCode.Right:
+                            if (keyApplied.TryGetValue(e.Key, out bool pressed) && pressed)
+                            {
+                                keyApplied[e.Key] = false;
+                                e.Handled = true;
+                            }
+                            break;
+
                         case KeyCode.LeftControl:
                             boostMoveFlag &= ~0x01;
                             break;
@@ -642,8 +659,7 @@ namespace WzComparerR2.MapRender
 
                         case "set":
                             string canvasName = arguments.ElementAtOrDefault(2);
-                            Texture2D canvas = null;
-                            if (canvasList?.TryGetValue(canvasName, out canvas) ?? false)
+                            if (canvasList != null && canvasList.TryGetValue(canvasName, out Texture2D canvas))
                             {
                                 this.ui.Minimap.MinimapCanvas = engine.Renderer.CreateTexture(canvas);
                                 this.ui.ChatBox.AppendTextHelp($"Set up a minimap: {canvasName}");
@@ -668,21 +684,31 @@ namespace WzComparerR2.MapRender
                             switch (arguments.ElementAtOrDefault(2))
                             {
                                 case "list":
-                                    var tags = GetSceneContainers(this.mapData?.Scene)
+                                    var mapTags = GetSceneContainers(this.mapData?.Scene)
                                         .SelectMany(container => container.Slots)
-                                        .Select(sceneItem => sceneItem.Tag)
-                                        .Where(tag => !string.IsNullOrEmpty(tag))
+                                        .Where(sceneItem => sceneItem.Tags != null && sceneItem.Tags.Length > 0)
+                                        .SelectMany(sceneItem => sceneItem.Tags)
                                         .Distinct()
                                         .OrderBy(tag => tag)
                                         .ToList();
-                                    this.ui.ChatBox.AppendTextHelp($"tags: {string.Join(", ",tags)}");
+                                    this.ui.ChatBox.AppendTextHelp($"Current Map Tags: {string.Join(", ", mapTags)}");
+                                    break;
+                                case "info":
+                                    var visibleTags = this.patchVisibility.TagsVisible.Where(kv => kv.Value).Select(kv => kv.Key).ToList();
+                                    var hiddenTags = this.patchVisibility.TagsVisible.Where(kv => !kv.Value).Select(kv => kv.Key).ToList();
+                                    this.ui.ChatBox.AppendTextHelp($"Default Tag Display Status: {this.patchVisibility.DefaultTagVisible}");
+                                    this.ui.ChatBox.AppendTextHelp($"Shown Tags: {string.Join(", ", visibleTags)}");
+                                    this.ui.ChatBox.AppendTextHelp($"Hidden Tags: {string.Join(", ", hiddenTags)}");
                                     break;
                                 case "show":
-                                    string tagName = arguments.ElementAtOrDefault(3);
-                                    if (!string.IsNullOrEmpty(tagName))
+                                    string[] tags = arguments.Skip(3).ToArray();
+                                    if (tags.Length > 0)
                                     {
-                                        this.patchVisibility.SetTagVisible(tagName, true);
-                                        this.ui.ChatBox.AppendTextHelp($"Show Tag: {tagName}");
+                                        foreach (var tag in tags)
+                                        {
+                                            this.patchVisibility.SetTagVisible(tag, true);
+                                        }
+                                        this.ui.ChatBox.AppendTextHelp($"Show Tag: {string.Join(", ", tags)}");
                                     }
                                     else
                                     {
@@ -690,12 +716,14 @@ namespace WzComparerR2.MapRender
                                     }
                                     break;
                                 case "hide":
-                                    tagName = arguments.ElementAtOrDefault(3);
-                                    this.patchVisibility.SetTagVisible(tagName, false);
-                                    if (!string.IsNullOrEmpty(tagName))
+                                    tags = arguments.Skip(3).ToArray();
+                                    if (tags.Length > 0)
                                     {
-                                        this.patchVisibility.SetTagVisible(tagName, false);
-                                        this.ui.ChatBox.AppendTextHelp($"Hide Tag: {tagName}");
+                                        foreach (var tag in tags)
+                                        {
+                                            this.patchVisibility.SetTagVisible(tag, false);
+                                        }
+                                        this.ui.ChatBox.AppendTextHelp($"Hide Tag: {string.Join(", ", tags)}");
                                     }
                                     else
                                     {
@@ -703,13 +731,40 @@ namespace WzComparerR2.MapRender
                                     }
                                     break;
                                 case "reset":
+                                    tags = arguments.Skip(3).ToArray();
+                                    if (tags.Length > 0)
+                                    {
+                                        this.patchVisibility.ResetTagVisible(tags);
+                                        this.ui.ChatBox.AppendTextHelp($"Reset Tag: {string.Join(", ", tags)}");
+                                    }
+                                    else
+                                    {
+                                        this.ui.ChatBox.AppendTextSystem("No tagName entered.");
+                                    }
+                                    break;
+                                case "reset-all":
                                     this.patchVisibility.ResetTagVisible();
+                                    this.ui.ChatBox.AppendTextHelp($"Resets the set tags.");
+                                    break;
+                                case "set-default":
+                                    if (bool.TryParse(arguments.ElementAtOrDefault(3), out bool isVisible))
+                                    {
+                                        this.patchVisibility.DefaultTagVisible = isVisible;
+                                        this.ui.ChatBox.AppendTextHelp($"Sets the default display state of a tag.{isVisible}");
+                                    }
+                                    else
+                                    {
+                                        this.ui.ChatBox.AppendTextSystem("Parameter error.");
+                                    }
                                     break;
                                 default:
                                     this.ui.ChatBox.AppendTextHelp(@"/scene tag list List the tags of all objects in the scene.");
-                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag show (tagName) Shows the object with tagName.");
-                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag hide (tagName) Hides the object with tagName.");
-                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag reset Reset all objects to display state.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag info Get the current custom display state.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag show (tagName)... Shows the object with tagName.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag hide (tagName)... Hides the object with tagName.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag reset (tagName)... Resets the display state of the specified tagName.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag reset-all Resets the display state of all tags.");
+                                    this.ui.ChatBox.AppendTextHelp(@"/scene tag set-default (true/false) Sets the default display state of all tags.");
                                     break;
                             }
                             break;
