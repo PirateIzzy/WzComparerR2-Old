@@ -751,9 +751,13 @@ namespace WzComparerR2.CharaSim
                 gear.HasTuc = true;
                 gear.CanPotential = true;
             }
-            else if (Gear.SpecialCanPotential(gear.type))
+            else if (Gear.SpecialCanPotential(gear.type) || Gear.IsSubWeapon(gear.type) || (gear.Props.TryGetValue(GearPropType.tucIgnoreForPotential, out value) && value > 0))
             {
                 gear.CanPotential = true;
+            }
+            if (Gear.IsMechanicGear(gear.type) || Gear.IsDragonGear(gear.type))
+            {
+                gear.CanPotential = false;
             }
 
             //读取默认gearGrade

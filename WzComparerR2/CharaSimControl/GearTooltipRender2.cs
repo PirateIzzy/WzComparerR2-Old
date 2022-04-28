@@ -498,6 +498,23 @@ namespace WzComparerR2.CharaSimControl
                 hasPart2 = true;
             }
 
+            if (Gear.GetBooleanValue(GearPropType.noPotential))
+            {
+                TextRenderer.DrawText(g, ItemStringHelper.GetGearPropString(GearPropType.noPotential, value), GearGraphics.EquipDetailFont, new Point(13, picH), Color.White, TextFormatFlags.NoPadding);
+                picH += 15;
+            }
+
+            if (!Gear.CanPotential)
+            {
+                TextRenderer.DrawText(g, "This item cannot gain Potential.", GearGraphics.EquipDetailFont, new Point(13, picH), Color.White, TextFormatFlags.NoPadding);
+                picH += 15;
+            }
+            if (Gear.Props.TryGetValue(GearPropType.fixedPotential, out value) && value > 0)
+            {
+                TextRenderer.DrawText(g, "Cannot Set Bonus Potential", GearGraphics.EquipDetailFont, new Point(13, picH), Color.White, TextFormatFlags.NoPadding);
+                picH += 15;
+            }
+
             //星星锤子
             /*if (hasTuc && Gear.Hammer > -1 && Gear.GetMaxStar() > 0)
             {
@@ -564,12 +581,6 @@ namespace WzComparerR2.CharaSimControl
                     picH += 15;
                     hasPart2 = true;
                 }
-            }
-
-            if (Gear.GetBooleanValue(GearPropType.noPotential))
-            {
-                TextRenderer.DrawText(g, ItemStringHelper.GetGearPropString(GearPropType.noPotential, value), GearGraphics.EquipDetailFont, new Point(13, picH), Color.White, TextFormatFlags.NoPadding);
-                picH += 15;
             }
 
             picH += 5;
