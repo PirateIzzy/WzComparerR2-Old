@@ -504,7 +504,7 @@ namespace WzComparerR2.CharaSimControl
                 picH += 15;
             }
 
-            if (!Gear.CanPotential)
+            if (!Gear.CanPotential && !Gear.Cash)
             {
                 TextRenderer.DrawText(g, "This item cannot gain Potential.", GearGraphics.EquipDetailFont, new Point(13, picH), Color.White, TextFormatFlags.NoPadding);
                 picH += 15;

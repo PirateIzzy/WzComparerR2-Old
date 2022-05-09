@@ -40,7 +40,7 @@ namespace WzComparerR2.MapRender
             else
             {
                 //添加提示语
-                this.ui.ChatBox.AppendTextSystem("MapRender加载失败，没有地图数据。");
+                this.ui.ChatBox.AppendTextSystem("MapRender failed to load, no map data.");
                 this.opacity = 1;
                 yield return cm.Yield(OnSceneRunning());
             }
@@ -492,7 +492,7 @@ namespace WzComparerR2.MapRender
                 }
                 else
                 {
-                    this.ui.ChatBox.AppendTextSystem($"没有找到ID:{toMap.Value}的地图。");
+                    this.ui.ChatBox.AppendTextSystem($"Unable to find Map ID: {toMap.Value}.");
                 }
             }
             else //当前地图
