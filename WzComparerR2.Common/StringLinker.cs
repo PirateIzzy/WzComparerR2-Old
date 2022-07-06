@@ -18,9 +18,9 @@ namespace WzComparerR2.Common
             stringSkill2 = new Dictionary<string, StringResult>();
         }
 
-        public bool Load(Wz_File stringWz)
+        public bool Load(Wz_File stringWz, Wz_File itemWz, Wz_File etcWz)
         {
-            if (stringWz == null || stringWz.Node == null)
+            if (stringWz == null || stringWz.Node == null || itemWz == null || itemWz.Node == null || etcWz == null || etcWz.Node == null)
                 return false;
             this.Clear();
             int id;
@@ -180,6 +180,7 @@ namespace WzComparerR2.Common
                         break;
                 }
             }
+
 
             return this.HasValues;
         }
