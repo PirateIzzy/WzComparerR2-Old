@@ -1,5 +1,6 @@
 ﻿# WzComparerR2
 -Translated for English use by PirateIzzy (work in progress)
+-This fork enabled SkillTooltip comparison report feature, with breaking changes implemented.
 
 # Modules
 - **WzComparerR2** 
@@ -53,4 +54,4 @@ Clone repository with submodules.
 - **[@KENNYSOFT](https://github.com/KENNYSOFT)** and his WcR2-KMS version.
 - **[@Kagamia](https://github.com/Kagamia)** and his WcR2-CMS version.
 - **[@Spadow](https://github.com/Sunaries)** and his assistance on translations.
-	
+- **[@seotbeo](https://github.com/seotbeo)** and his SkillTooltip comparison fork.	
