@@ -14,6 +14,9 @@ namespace WzComparerR2.Patcher
         TempFileCreated,
         TempFileBuildProcessChanged,
         TempFileClosed,
+        CompareStarted,
+        CompareProcessChanged,
+        CompareFinished,
 
         PrepareVerifyOldChecksumBegin,
         PrepareVerifyOldChecksumEnd,
