@@ -1,6 +1,6 @@
 ﻿# WzComparerR2
 - Translated for English use by PirateIzzy (work in progress)
-- This fork enabled SkillTooltip comparison report feature ported from [@seotbeo's Skill comparison feature](https://github.com/seotbeo/WzComparerR2/tree/skill), with breaking changes implemented, therefore it's only provided as an individual branch. Still needs to review the code quality.
+- This fork enabled SkillTooltip comparison report feature ported from [@seotbeo's Skill comparison branch](https://github.com/seotbeo/WzComparerR2/tree/skill), with breaking changes implemented, therefore it's only provided as an individual branch. Still needs to review the code quality.
 
 # Modules
 - **WzComparerR2** 
