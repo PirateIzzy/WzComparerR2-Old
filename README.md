@@ -17,7 +17,7 @@
 
 # Installation
 ```sh
-git clone --recurse-submodules -j8 git://github.com/Kagamia/WzComparerR2.git
+git clone --recurse-submodules -j8 git://github.com/PirateIzzy/WzComparerR2.git
 ```
 Clone repository with submodules.
 
