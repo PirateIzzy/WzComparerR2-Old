@@ -17,7 +17,7 @@
 
 # Installation
 ```sh
-git clone --recurse-submodules -j8 git://github.com/Kagamia/WzComparerR2.git
+git clone --recurse-submodules -j8 git://github.com/PirateIzzy/WzComparerR2.git
 ```
 Clone repository with submodules.
 
@@ -28,7 +28,9 @@ Clone repository with submodules.
 - Download **WzComparerR2.zip** from [Releases](https://github.com/PirateIzzy/WzComparerR2-Code/releases) and extract the ZIP to a location of your choice (note that you may need to make adjustments in your AntiVirus's settings for it to work).
 
 - **To view WZ files**
-- Open the Base.wz of a MapleStory version of your choice. Right click and Sort to organize the files alphanumerically (if not automatically sorted already).
+- Launch WzComparerR2, click the main menu, and select "Options".
+- Under General Settings -> WzLoading, set WZ version verification to "Fast". (This will speed up the load time of MapleStory WZ files)
+- Navigate to your MapleStory folder's Base folder (e.g. `C:\<MapleStory Folder>\Data\Base`) and open the Base.wz file. Right click and Sort to organize the files alphanumerically (if not automatically sorted already).
 - Under Modules, click the QuickView dropdown and select AutoQuickView (for easier viewing).
 - Take a look at the data of your choice under the WzView tab.
 
