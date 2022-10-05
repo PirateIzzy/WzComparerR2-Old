@@ -1932,7 +1932,7 @@ namespace WzComparerR2
             QueryPerformance.Start();
             if (!this.stringLinker.HasValues)
             {
-                if (!this.stringLinker.Load(findStringWz()))
+                if (!this.stringLinker.Load(findStringWz(), findItemWz(), findEtcWz()))
                 {
                     MessageBoxEx.Show("Please specify a String.wz File.", "Error");
                     return;
@@ -2011,6 +2011,36 @@ namespace WzComparerR2
             return null;
         }
 
+        private Wz_File findItemWz()
+        {
+            foreach (Wz_Structure wz in openedWz)
+            {
+                foreach (Wz_File file in wz.wz_files)
+                {
+                    if (file.Type == Wz_Type.Item)
+                    {
+                        return file;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private Wz_File findEtcWz()
+        {
+            foreach (Wz_Structure wz in openedWz)
+            {
+                foreach (Wz_File file in wz.wz_files)
+                {
+                    if (file.Type == Wz_Type.Etc)
+                    {
+                        return file;
+                    }
+                }
+            }
+            return null;
+        }
+
         private IEnumerable<KeyValuePair<int, StringResult>> searchStringLinker(IEnumerable<Dictionary<int, StringResult>> dicts, string key, bool exact, bool isRegex)
         {
             string[] match = key.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -2076,7 +2106,7 @@ namespace WzComparerR2
                 return;
             }
             QueryPerformance.Start();
-            bool r = stringLinker.Load(stringWzFile);
+            bool r = stringLinker.Load(stringWzFile, itemWzFile, etcWzFile);
             QueryPerformance.End();
             if (r)
             {
@@ -2605,7 +2635,7 @@ namespace WzComparerR2
 
             if (!this.stringLinker.HasValues)
             {
-                this.stringLinker.Load(findStringWz());
+                this.stringLinker.Load(findStringWz(), findItemWz(), findEtcWz());
             }
 
             object obj = null;
@@ -3007,6 +3037,7 @@ namespace WzComparerR2
                     comparer.OutputAddedImg = chkOutputAddedImg.Checked;
                     comparer.OutputRemovedImg = chkOutputRemovedImg.Checked;
                     comparer.EnableDarkMode = chkEnableDarkMode.Checked;
+                    comparer.saveSkillTooltip = chkSaveSkillTooltip.Checked;
                     comparer.StateInfoChanged += new EventHandler(comparer_StateInfoChanged);
                     comparer.StateDetailChanged += new EventHandler(comparer_StateDetailChanged);
                     try
@@ -3092,7 +3123,7 @@ namespace WzComparerR2
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 if (!this.stringLinker.HasValues)
-                    this.stringLinker.Load(findStringWz());
+                    this.stringLinker.Load(findStringWz(), findItemWz(), findEtcWz());
 
                 DBConnection conn = new DBConnection(this.stringLinker);
                 DataSet ds = conn.GenerateSkillTable();
@@ -3115,7 +3146,7 @@ namespace WzComparerR2
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 if (!this.stringLinker.HasValues)
-                    this.stringLinker.Load(findStringWz());
+                    this.stringLinker.Load(findStringWz(), findItemWz(), findEtcWz());
 
                 DBConnection conn = new DBConnection(this.stringLinker);
                 conn.ExportSkillOption(dlg.SelectedPath);

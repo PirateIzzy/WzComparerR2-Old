@@ -45,6 +45,7 @@
             this.buttonXCheck = new DevComponents.DotNetBar.ButtonX();
             this.expandablePanel2 = new DevComponents.DotNetBar.ExpandablePanel();
             this.chkEnableDarkMode = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.chkSaveSkillTooltip = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkOutputRemovedImg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkOutputAddedImg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cmbComparePng = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -341,6 +342,7 @@
             this.expandablePanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.expandablePanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.expandablePanel2.Controls.Add(this.chkResolvePngLink);
+            this.expandablePanel2.Controls.Add(this.chkSaveSkillTooltip);
             this.expandablePanel2.Controls.Add(this.chkEnableDarkMode);
             this.expandablePanel2.Controls.Add(this.chkOutputRemovedImg);
             this.expandablePanel2.Controls.Add(this.chkOutputAddedImg);
@@ -395,6 +397,23 @@
             this.superTooltip1.SetSuperTooltip(this.chkEnableDarkMode, new DevComponents.DotNetBar.SuperTooltipInfo("EnableDarkMode", "", "Outputs the comparison with dark mode HTML.", null, null, DevComponents.DotNetBar.eTooltipColor.System, true, false, new System.Drawing.Size(180, 60)));
             this.chkEnableDarkMode.TabIndex = 14;
             this.chkEnableDarkMode.Text = "EnableDarkMode";
+            //
+            // chkSaveSkillTooltip
+            // 
+            this.chkSaveSkillTooltip.AutoSize = true;
+            this.chkSaveSkillTooltip.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.chkSaveSkillTooltip.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkSaveSkillTooltip.Location = new System.Drawing.Point(208, 88);
+            this.chkSaveSkillTooltip.Name = "chkEnableDarkMode";
+            this.chkSaveSkillTooltip.Size = new System.Drawing.Size(125, 16);
+            this.chkSaveSkillTooltip.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.superTooltip1.SetSuperTooltip(this.chkSaveSkillTooltip, new DevComponents.DotNetBar.SuperTooltipInfo("스킬 툴팁 저장", "", "변경된 스킬의 툴팁 이미지를 저장합니다.", null, null, DevComponents.DotNetBar.eTooltipColor.System, true, false, new System.Drawing.Size(180, 60)));
+            this.chkSaveSkillTooltip.TabIndex = 14;
+            this.chkSaveSkillTooltip.Text = "SaveSkillTooltip";
+            // 
             // 
             // chkOutputRemovedImg
             // 
@@ -987,5 +1006,6 @@
         private DevComponents.DotNetBar.ButtonX buttonXCreate;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkResolvePngLink;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkEnableDarkMode;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkSaveSkillTooltip;
     }
 }

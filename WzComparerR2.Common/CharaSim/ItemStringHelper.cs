@@ -745,6 +745,14 @@ namespace WzComparerR2.CharaSim
                 case 4212: return "Kanna (4th)";
                 case 4213: return "Kanna (5th)";
 
+                case 5080: return "Jett (1st)";
+                case 5081: return "Jett (1st)";
+                case 5700: return "Jett (2nd)";
+                case 5701: return "Jett (2nd)";
+                case 5710: return "Jett (3rd)";
+                case 5711: return "Jett (3rd)";
+                case 5720: return "Jett (4th)";
+                case 5721: return "Jett (4th)";
 
                 case 5000: return "Mihile";
                 case 5100: return "Mihile (1st)";
@@ -829,6 +837,13 @@ namespace WzComparerR2.CharaSim
                 case 16411: return "Hoyoung (3rd)";
                 case 16412: return "Hoyoung (4th)";
                 case 16413: return "Hoyoung (5th)";
+
+                case 17000: return "Mo Xuan";
+                case 17500: return "Mo Xuan (1st)";
+                case 17510: return "Mo Xuan (2nd)";
+                case 17511: return "Mo Xuan (3rd)";
+                case 17512: return "Mo Xuan (4th)";
+                case 17513: return "Mo Xuan (5th)";
             }
             return null;
         }

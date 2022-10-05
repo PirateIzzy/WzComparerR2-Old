@@ -59,6 +59,7 @@ namespace WzComparerR2.CharaSim
         public bool CombatOrders { get; set; }
         public bool NotRemoved { get; set; }
         public bool VSkill { get; set; }
+        public int VSkillValue { get; set; }
         public bool NotIncBuffDuration { get; set; }
         public bool NotCooltimeReset { get; set; }
         public int MasterLevel { get; set; }
@@ -150,6 +151,7 @@ namespace WzComparerR2.CharaSim
                         break;
                     case "vSkill":
                         skill.VSkill = childNode.GetValue<int>() != 0;
+                        skill.VSkillValue = childNode.GetValue<int>();
                         break;
                     case "notIncBuffDuration":
                         skill.NotIncBuffDuration = childNode.GetValue<int>() != 0;

@@ -199,6 +199,7 @@
             this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.chkResolvePngLink = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkEnableDarkMode = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.chkSaveSkillTooltip = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkOutputRemovedImg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.chkOutputAddedImg = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -2304,6 +2305,7 @@
             // superTabControlPanel2
             // 
             this.superTabControlPanel2.Controls.Add(this.chkEnableDarkMode);
+            this.superTabControlPanel2.Controls.Add(this.chkSaveSkillTooltip);
             this.superTabControlPanel2.Controls.Add(this.chkResolvePngLink);
             this.superTabControlPanel2.Controls.Add(this.chkOutputRemovedImg);
             this.superTabControlPanel2.Controls.Add(this.chkOutputAddedImg);
@@ -2346,8 +2348,20 @@
             this.chkEnableDarkMode.TabIndex = 9;
             this.chkEnableDarkMode.Text = "EnableDarkMode";
             // 
-            // chkOutputRemovedImg
+            // chkSaveSkillTooltip
             // 
+            // 
+            // 
+            // 
+            this.chkSaveSkillTooltip.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.chkSaveSkillTooltip.Location = new System.Drawing.Point(420, 61);
+            this.chkSaveSkillTooltip.Name = "chkSaveSkillTooltip";
+            this.chkSaveSkillTooltip.Size = new System.Drawing.Size(135, 23);
+            this.chkSaveSkillTooltip.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.chkSaveSkillTooltip.TabIndex = 9;
+            this.chkSaveSkillTooltip.Text = "SaveSkillTooltip";
+            // 
+            // chkOutputRemovedImg
             // 
             // 
             // 
@@ -3189,5 +3203,6 @@
         private DevComponents.DotNetBar.CheckBoxItem checkBoxItemRegex1;
         private DevComponents.DotNetBar.CheckBoxItem checkBoxItemRegex2;
         private DevComponents.DotNetBar.Controls.CheckBoxX chkEnableDarkMode;
+        private DevComponents.DotNetBar.Controls.CheckBoxX chkSaveSkillTooltip;
     }
 }
