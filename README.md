@@ -1,5 +1,5 @@
-﻿# WzComparerR2
--Translated for English use by PirateIzzy (work in progress)
+# WzComparerR2-Old
+- Formerly, this Repository was forked from Kagamia's repository. I am migrating to a new fork from KENNYSOFT's repository, and this will remain archived.
 
 # Modules
 - **WzComparerR2** 
